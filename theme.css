@@ -696,8 +696,8 @@ html[data-theme="light"] .contact-options {
     height: 30px;
   }
 
-  .nav.nav-visible,
-  .nav.nav-scrolled {
+  html[data-theme="light"] .nav.nav-visible,
+  html[data-theme="light"] .nav.nav-scrolled {
     right: 6px;
     border-color: #dce2ea;
     background: #ffffff;
