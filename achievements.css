@@ -1,0 +1,204 @@
+.achievement-carousel {
+  --achievement-card-width: 270px;
+  --achievement-card-height: 160px;
+  --achievement-gap: 16px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.achievement-track {
+  display: flex;
+  width: max-content;
+}
+
+.achievement-group {
+  display: flex;
+  flex: none;
+  gap: var(--achievement-gap);
+  padding-right: var(--achievement-gap);
+}
+
+.achievement-carousel.is-ready .achievement-track {
+  animation: achievements-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+.achievement-carousel:hover .achievement-track,
+.achievement-carousel:focus-within .achievement-track {
+  animation-play-state: paused;
+}
+
+.achievement {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 var(--achievement-card-width);
+  flex-direction: column;
+  align-items: flex-start;
+  width: var(--achievement-card-width);
+  height: var(--achievement-card-height);
+  min-width: 0;
+  position: relative;
+  padding: 14px 16px;
+  overflow: hidden;
+  border: 1px solid #302a20;
+  border-radius: 18px;
+  background: #111110;
+  color: var(--cream);
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.achievement:hover,
+.achievement:focus-visible {
+  border-color: rgba(243, 173, 50, .6);
+  transform: translateY(-3px);
+}
+
+.achievement-year,
+.achievement-profile-label {
+  color: var(--gold);
+  font: 9px "DM Mono", monospace;
+  letter-spacing: .14em;
+}
+
+.achievement-logo {
+  display: block;
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  flex: none;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  object-fit: contain;
+}
+
+.logo-chandigarh {
+  width: 78px;
+  height: 38px;
+}
+
+.logo-sih {
+  width: 40px;
+  height: 44px;
+}
+
+.logo-texas {
+  width: 88px;
+  height: 32px;
+}
+
+.logo-flipkart,
+.logo-leetcode,
+.logo-gfg {
+  width: 38px;
+  height: 38px;
+}
+
+.achievement-event b {
+  margin-top: auto;
+  font-size: 17px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.achievement-event p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.achievement-profile {
+  text-decoration: none;
+}
+
+.achievement-profile-label {
+  margin-bottom: 0;
+}
+
+.achievement-stat {
+  margin-top: auto;
+  color: var(--yellow);
+  font-size: 43px;
+  font-weight: 800;
+  letter-spacing: -.065em;
+  line-height: .95;
+}
+
+.achievement-profile b {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.achievement-result {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.achievement-cta {
+  margin-top: auto;
+  padding-top: 8px;
+  color: var(--gold);
+  font: 9px "DM Mono", monospace;
+  letter-spacing: .1em;
+}
+
+@keyframes achievements-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 900px) {
+  .achievement-carousel {
+    --achievement-card-width: 244px;
+    --achievement-gap: 13px;
+  }
+}
+
+@media (max-width: 700px) {
+  .achievement-carousel {
+    --achievement-card-width: 230px;
+    --achievement-card-height: 156px;
+    --achievement-gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) #111110;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .achievement-carousel.is-ready .achievement-track {
+    animation: none;
+    will-change: auto;
+  }
+
+  .achievement {
+    scroll-snap-align: start;
+    padding: 13px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .achievement-carousel {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) #111110;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .achievement-carousel.is-ready .achievement-track {
+    animation: none;
+    will-change: auto;
+  }
+
+  .achievement {
+    transition: none;
+  }
+}
